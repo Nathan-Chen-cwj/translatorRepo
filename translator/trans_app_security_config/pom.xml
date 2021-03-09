@@ -8,12 +8,18 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>trans_pojo</artifactId>
+
+    <artifactId>trans_app_security_config</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.trans</groupId>
-            <artifactId>trans_common</artifactId>
+            <artifactId>trans_service</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
