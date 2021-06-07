@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/foodie-shop?characterEncoding=utf8&allowMultiQueries=true
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: 1234
+  redis:
+    host: 47.113.206.216
+    port: 6379
+    password: nathanchenredis
+    database: 2
+#security:
+#  oauth2:
+#    client:
+#      client-id: seehope
+#      client-secret: 123456
+mybatis:
+  mapper-locations:
+    - classpath*:mappers/**/*.xml
+  configuration:
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    cache-enabled: true
+logging:
+  level:
+    org.springframework: info
+    net.seehope: debug
+net:
+    browser:
+      swagger: /swagger-ui/*

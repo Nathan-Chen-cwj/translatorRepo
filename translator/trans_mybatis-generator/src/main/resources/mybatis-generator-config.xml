@@ -69,7 +69,7 @@
 		<!-- targetPackage 生成的pojo对象保存的位置 -->
 		<!-- targetProject 目标工程 -->
 		<javaModelGenerator
-			targetPackage="com.trans.translator.pojo"
+			targetPackage="com.trans.translator.po"
 			targetProject="./trans_pojo/src/main/java" />
 		<!-- 需要生成什么表的pojo对象 % 表示全部 -->
 		<table tableName="%"/>
