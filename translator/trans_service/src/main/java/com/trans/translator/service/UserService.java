@@ -72,4 +72,28 @@ public interface UserService {
      */
     public UserLoginVo doesVerificationCodeMatch(UserAccountBo accountBo);
 
+    /**
+     * 主要用于注册时：
+     *      校验用户名是否已被使用
+     * @param username
+     * @return
+     */
+    public String doesUsernameHasBeenUsed(String username);
+
+    /**
+     * 主要用于注册时：
+     *      校验手机号码是否已被使用
+     * @param mobile
+     * @return
+     */
+    public String doesMobileHasBeenUsed(String mobile);
+
+    /**
+     * 主要用于注册时：
+     *      校验邮箱是否已被使用
+     * @param email
+     * @return
+     */
+    public String doesEmailHasBeenUsed(String email);
+
 }
