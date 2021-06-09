@@ -15,42 +15,61 @@ import com.trans.translator.vo.UserLoginVo;
 public interface UserService {
 
     /**
-     * 用户登陆 用户名+密码、手机号+密码、手机号+验证码、第三方登陆
-     * @return
-     */
-    public UserLoginVo doesUsernameMatchPassword(UserAccountBo accountBo);
-
-    /**
-     * 用户登陆 手机号+密码
-     * @return
-     */
-    public UserLoginVo doesMobileMatchPassword(UserAccountBo accountBo);
-
-    /**
-     * 用户登陆 手机号+验证码
-     * @return
-     */
-    public UserLoginVo doesVerificationCodeMatch(UserAccountBo accountBo);
-
-    /**
      * 用户注册方法
      * 注册要求用户名不能为纯数字，
      * 纯数字的在登陆时直接认定为手机号码登陆
      * 本质是向用户及用户相关表插入数据
+     *
+     * 注册用户须有：
+     * 1.手机号码正则校验，手机短信校验
+     * 2.验证用户名是否已被使用
+     * 3.邮箱正则校验，邮箱验证码校验
+     * @param accountBo 用于验证当前用户的用户信息
      * @return
      */
     public boolean register(UserAccountBo accountBo);
 
     /**
      * 用户注销账号
+     * 注销用户须有：
+     * 1.手机短信校验或邮箱验证码校验
+     * @param accountBo 用于验证当前用户的用户信息
      * @return
      */
     public boolean logOffAccount(UserAccountBo accountBo);
 
     /**
      * 用户更新账号信息
+     * 更新除id的所有内容，id唯一且不可变，更改一下所有信息都须携带id
+     * 1.更新用户名需要验证新用户名是否已被使用
+     * 2.更改手机号码需要发送验证码，检验手机是否是用户自己的手机
+     * 3.更改密码需要验证旧密码
+     *      或者使用手机号码+验证码验证
+     *
+     * @param accountBo 用于验证当前用户的用户信息
      * @return
      */
     public UserLoginVo updateAccountMsg(UserAccountBo accountBo);
+
+    /**
+     * 用户登陆 用户名+密码、手机号+密码、手机号+验证码、第三方登陆
+     * @param accountBo 用于验证当前用户的用户信息
+     * @return
+     */
+    public UserLoginVo doesUsernameMatchPassword(UserAccountBo accountBo);
+
+    /**
+     * 用户登陆 手机号+密码
+     * @param accountBo 用于验证当前用户的用户信息
+     * @return
+     */
+    public UserLoginVo doesMobileMatchPassword(UserAccountBo accountBo);
+
+    /**
+     * 用户登陆 手机号+验证码
+     * @param accountBo 用于验证当前用户的用户信息
+     * @return
+     */
+    public UserLoginVo doesVerificationCodeMatch(UserAccountBo accountBo);
 
 }

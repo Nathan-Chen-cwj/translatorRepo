@@ -19,11 +19,16 @@ import java.util.Date;
 public class UserAccountBo {
     private String id;
     private String username;
+    private String password;
     private String sex;
     private Date birthday;
     private String email;
     private String img;
     private String phone;
+    /**
+     * 验证码
+     */
+    private String verCode;
     private Date createdTime;
     private Date updatedTime;
     private String label1;
