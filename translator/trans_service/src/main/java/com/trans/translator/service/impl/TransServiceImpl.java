@@ -26,6 +26,12 @@ public class TransServiceImpl implements TransService {
         String transResult = transApi.getTransResult(keywords, from, to);
         //将翻译结果转换成map方便数据处理
         Map map = JSON.parseObject(transResult, Map.class);
+        /*
+            将翻译原文和翻译结果提取分离出来进行进行自己的逻辑处理
+            1.确定是否需要把其作为热键存储到redis中
+            2.把我们需要添加翻译中文注音匹配词句添加到结构中
+                通过to这个变量来确定使用哪个注音表
+         */
         System.out.println(map);
         return transResult;
     }

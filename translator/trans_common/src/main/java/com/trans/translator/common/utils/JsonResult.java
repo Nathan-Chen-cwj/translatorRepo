@@ -1,75 +1,85 @@
 package com.trans.translator.common.utils;
 
+import com.trans.translator.common.emuns.ResultCode;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.io.Serializable;
+
 /**
  * 后台返回给所有终端的统一封装
- * 
- * @author Monty
- *
+ * @Version 1.0
+ * @Author NathanChen
+ * @Date 2021/6/15 23:38
+ * @param <T>
  */
-public class JsonResult {
+@Configuration
+public class JsonResult<T> implements Serializable {
 
-	/**
-	 * 当前相应的状态，如果成功应该是200
-	 * 
-	 * 500 代码异常 401 未授权 400 请求参数非法 各个状态码有不同的含义
-	 */
-	public int status;
-	/**
-	 * 如果请求有数据，那么放在data中
-	 */
-	public Object data;
-	/**
-	 * 如果请求错误，那么返回错误信息
-	 */
-	private String msg;
+	private Boolean success;
+	private Integer errorCode;
+	private String errorMsg;
+	private T data;
 
 	public JsonResult() {
 	}
 
-	public JsonResult(int status, Object data, String msg) {
-		this.status = status;
+	public JsonResult(boolean success) {
+		this.success = success;
+		this.errorCode = success ? ResultCode.SUCCESS.getCode() : ResultCode.COMMON_FAIL.getCode();
+		this.errorMsg = success ? ResultCode.SUCCESS.getMessage() : ResultCode.COMMON_FAIL.getMessage();
+	}
+
+	public JsonResult(boolean success, ResultCode resultEnum) {
+		this.success = success;
+		this.errorCode = success ? ResultCode.SUCCESS.getCode() : (resultEnum == null ? ResultCode.COMMON_FAIL.getCode() : resultEnum.getCode());
+		this.errorMsg = success ? ResultCode.SUCCESS.getMessage() : (resultEnum == null ? ResultCode.COMMON_FAIL.getMessage() : resultEnum.getMessage());
+	}
+
+	public JsonResult(boolean success, T data) {
+		this.success = success;
+		this.errorCode = success ? ResultCode.SUCCESS.getCode() : ResultCode.COMMON_FAIL.getCode();
+		this.errorMsg = success ? ResultCode.SUCCESS.getMessage() : ResultCode.COMMON_FAIL.getMessage();
 		this.data = data;
-		this.msg = msg;
 	}
 
-	public static JsonResult isOk(Object data) {
-		return new JsonResult(200, data, "success");
+	public JsonResult(boolean success, ResultCode resultEnum, T data) {
+		this.success = success;
+		this.errorCode = success ? ResultCode.SUCCESS.getCode() : (resultEnum == null ? ResultCode.COMMON_FAIL.getCode() : resultEnum.getCode());
+		this.errorMsg = success ? ResultCode.SUCCESS.getMessage() : (resultEnum == null ? ResultCode.COMMON_FAIL.getMessage() : resultEnum.getMessage());
+		this.data = data;
 	}
 
-	public static JsonResult err(String msg) {
-		return new JsonResult(500, null, msg);
+	public Boolean getSuccess() {
+		return success;
 	}
 
-	public static JsonResult errBadRequest(Object data, String msg) {
-		return new JsonResult(400, data, msg);
+	public void setSuccess(Boolean success) {
+		this.success = success;
 	}
 
-	public static JsonResult errAuthorize(String msg) {
-		return new JsonResult(401, null, msg);
+	public Integer getErrorCode() {
+		return errorCode;
 	}
 
-	public int getStatus() {
-		return status;
+	public void setErrorCode(Integer errorCode) {
+		this.errorCode = errorCode;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public String getErrorMsg() {
+		return errorMsg;
 	}
 
-	public Object getData() {
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
+	}
+
+	public T getData() {
 		return data;
 	}
 
-	public void setData(Object data) {
+	public void setData(T data) {
 		this.data = data;
-	}
-
-	public String getMsg() {
-		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
 	}
 
 }

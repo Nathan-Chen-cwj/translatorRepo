@@ -1,4 +1,4 @@
-package com.trans.translator.app.secutiry;
+package com.trans.translator.controller.app.secutiry;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

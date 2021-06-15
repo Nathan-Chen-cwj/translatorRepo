@@ -104,16 +104,4 @@ public class SmsSample {
         return strret;
     }
 
-    /**
-     * 生产4位数随机验证码
-     * @return
-     */
-    public static String getCode(){
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 4; i++) {
-            int rand = (int)(Math.random()*10);
-            sb.append(rand);
-        }
-        return sb.toString();
-    }
 }

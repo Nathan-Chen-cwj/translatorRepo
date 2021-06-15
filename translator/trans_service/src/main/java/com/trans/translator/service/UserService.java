@@ -27,7 +27,7 @@ public interface UserService {
      * @param accountBo 用于验证当前用户的用户信息
      * @return
      */
-    public boolean register(UserAccountBo accountBo);
+    public UserLoginVo register(UserAccountBo accountBo);
 
     /**
      * 用户注销账号

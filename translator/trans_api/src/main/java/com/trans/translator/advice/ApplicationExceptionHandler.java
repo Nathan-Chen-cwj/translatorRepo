@@ -1,6 +1,8 @@
 package com.trans.translator.advice;
 
+import com.trans.translator.common.emuns.ResultCode;
 import com.trans.translator.common.utils.JsonResult;
+import com.trans.translator.common.utils.JsonResultReturnTool;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +39,7 @@ public class ApplicationExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     public JsonResult handleExceptionRequest(Exception e) {
         e.printStackTrace();
-        return JsonResult.err(e.getLocalizedMessage());
+        return JsonResultReturnTool.isError(ResultCode.COMMON_FAIL);
     }
 
 }
