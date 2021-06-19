@@ -1,5 +1,6 @@
 package com.trans.translator.controller;
 
+import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.trans.translator.common.utils.JsonResult;
 import com.trans.translator.common.utils.JsonResultReturnTool;
 import com.trans.translator.service.TransService;
@@ -26,8 +27,8 @@ public class TranslatorController {
     }
 
     @GetMapping("/tencentTrans")
-    public JsonResult getTencentTransResult(String keywords,String from,String to){
-        return JsonResultReturnTool.success(transService.translateByBaiDu(keywords, from, to));
+    public JsonResult getTencentTransResult(String keywords,String from,String to) throws TencentCloudSDKException {
+        return JsonResultReturnTool.success(transService.translateByTencent(keywords, from, to));
     }
 
     @GetMapping("/googleTrans")

@@ -1,5 +1,7 @@
 package com.trans.translator.service;
 
+import com.tencentcloudapi.common.exception.TencentCloudSDKException;
+
 /**
  * @Version 1.0
  * @Author NathanChen
@@ -29,7 +31,7 @@ public interface TransService {
      * @param keywords
      * @return
      */
-    public String translateByTencent(String keywords);
+    public String translateByTencent(String keywords,String from,String to) throws TencentCloudSDKException;
 
     /**
      * 谷歌翻译处理翻译业务
