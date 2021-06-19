@@ -1,10 +1,10 @@
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/foodie-shop?characterEncoding=utf8&allowMultiQueries=true
+      url: jdbc:mysql://47.113.206.216:3306/trans_mysql?characterEncoding=utf8&allowMultiQueries=true
       driver-class-name: com.mysql.jdbc.Driver
-      username: root
-      password: 1234
+      username: trans_developer
+      password: trans
   redis:
     host: 47.113.206.216
     port: 6379

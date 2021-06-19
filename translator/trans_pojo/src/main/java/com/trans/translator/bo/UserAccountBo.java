@@ -17,10 +17,20 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserAccountBo {
-    private String id;
+    /**
+     * 用户表id
+     */
+    private String userId;
+
+    /**
+     * 收货地址表id
+     */
+    private String userReceivingId;
+
     private String username;
     private String password;
     private String sex;
+    private int status;
     private Date birthday;
     private String email;
     private String img;
