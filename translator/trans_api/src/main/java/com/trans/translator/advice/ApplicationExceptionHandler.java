@@ -1,8 +1,10 @@
 package com.trans.translator.advice;
 
+import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.trans.translator.common.emuns.ResultCode;
 import com.trans.translator.common.utils.JsonResult;
 import com.trans.translator.common.utils.JsonResultReturnTool;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
  *   因为@RestControllerAdvice源码中已经帮我们添加了@ResponseBody注解
  */
 @RestControllerAdvice
+@Slf4j
 public class ApplicationExceptionHandler {
 
     /**
@@ -39,6 +42,18 @@ public class ApplicationExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     public JsonResult handleExceptionRequest(Exception e) {
         e.printStackTrace();
+        return JsonResultReturnTool.isError(ResultCode.COMMON_FAIL);
+    }
+
+    /**
+     * TencentCloudSDKException: 腾讯翻译接口异常处理类
+     * @param e
+     * @return
+     */
+    @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(value = TencentCloudSDKException.class)
+    public JsonResult handleTencentCloudSDKExceptionRequest(Exception e) {
+        log.error(e.toString());
         return JsonResultReturnTool.isError(ResultCode.COMMON_FAIL);
     }
 

@@ -18,4 +18,13 @@ public class ProjectConstant {
     public final static String BAIDU_SECURITY_KEY = "ntW_bY9sKCEtXuKUlzvm";
 
     public final static Integer VER_CODE_LENGTH = 4;
+
+    /**
+     * 腾讯翻译secretId
+     */
+    public final static String TENCENT_SECRET_ID = "AKIDrXx6zauxjESP6WfX8TXJo31h6F6gz1mG";
+    /**
+     * 腾讯翻译密钥
+     */
+    public final static String TENCENT_SECRET_KEY="EBsIRItCF1VieJhoeEXZKo0vay4tSjjS";
 }

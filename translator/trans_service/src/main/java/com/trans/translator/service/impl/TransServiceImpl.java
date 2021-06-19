@@ -1,9 +1,11 @@
 package com.trans.translator.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.trans.translator.common.ProjectConstant;
 import com.trans.translator.service.TransService;
 import com.trans.translator.service.core.baidu.TransApi;
+import com.trans.translator.service.core.tencent.TencentApi;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -37,8 +39,8 @@ public class TransServiceImpl implements TransService {
     }
 
     @Override
-    public String translateByTencent(String keywords) {
-        return null;
+    public String translateByTencent(String keywords,String from,String to) throws TencentCloudSDKException {
+        return TencentApi.getTransResult(keywords,from,to);
     }
 
     @Override
