@@ -4,9 +4,8 @@ import com.trans.translator.common.ProjectConstant;
 import com.trans.translator.common.utils.GetRandomCode;
 import com.trans.translator.common.utils.RedisUtils;
 import com.trans.translator.common.utils.SmsSample;
-import com.trans.translator.service.GetPublicMsgService;
+import com.trans.translator.service.GetPublicInfService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
@@ -17,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @Date 2021/6/13 13:47
  */
 @Service
-public class GetPublicMsgServiceImpl implements GetPublicMsgService {
+public class GetPublicInfServiceImpl implements GetPublicInfService {
 
     @Autowired
     private RedisUtils redisUtils;

@@ -1,6 +1,7 @@
 package com.trans.translator.mapper;
 
 import com.trans.translator.bo.UserAccountBo;
+import com.trans.translator.po.UserJurisdictionTable;
 import com.trans.translator.po.UserMainInformationTable;
 import com.trans.translator.vo.UserLoginVo;
 
@@ -18,7 +19,16 @@ public interface UserMainInformationTableMapper extends tk.mybatis.mapper.common
      * @param accountBo
      * @return
      */
-    public boolean register(UserAccountBo accountBo);
+    public int insertIntoUserMainInfTab(UserAccountBo accountBo);
+
+    /**
+     * 用户注册系列插入，插入标签表
+     * @param accountBo
+     * @return
+     */
+    public int insertIntoUserLabTab(UserAccountBo accountBo);
+
+
 
     /**
      * 用户注销账号

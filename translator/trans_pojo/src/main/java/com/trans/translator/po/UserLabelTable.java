@@ -4,14 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
+/**
+ * @author vessel
+ */
 @Table(name = "`user_label_table`")
 public class UserLabelTable implements Serializable {
-    /**
-     * 用户其他信息表的主键
-     */
-    @Id
-    @Column(name = "`id`")
-    private String id;
 
     /**
      * 用户的id，与用户主要信息表形成外键关系
@@ -44,25 +41,13 @@ public class UserLabelTable implements Serializable {
     @Column(name = "`u_label4`")
     private String uLabel4;
 
+    /**
+     * 用于存储用户创建/更改标签的时间
+     */
+    @Column(name = "`update_time`")
+    private Date updateTime;
+
     private static final long serialVersionUID = 1L;
-
-    /**
-     * 获取用户其他信息表的主键
-     *
-     * @return id - 用户其他信息表的主键
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 设置用户其他信息表的主键
-     *
-     * @param id 用户其他信息表的主键
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
 
     /**
      * 获取用户的id，与用户主要信息表形成外键关系
@@ -153,5 +138,13 @@ public class UserLabelTable implements Serializable {
      */
     public void setuLabel4(String uLabel4) {
         this.uLabel4 = uLabel4;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

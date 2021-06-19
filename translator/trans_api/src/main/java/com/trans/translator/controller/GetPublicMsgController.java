@@ -2,7 +2,7 @@ package com.trans.translator.controller;
 
 import com.trans.translator.common.utils.JsonResult;
 import com.trans.translator.common.utils.JsonResultReturnTool;
-import com.trans.translator.service.GetPublicMsgService;
+import com.trans.translator.service.GetPublicInfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GetPublicMsgController {
 
     @Autowired
-    private GetPublicMsgService getPublicMsgService;
+    private GetPublicInfService getPublicInfService;
 
     /**
      * 获取手机验证码
@@ -31,7 +31,11 @@ public class GetPublicMsgController {
      */
     @GetMapping("/getMobileVerCode")
     public JsonResult sendSmsVerCode(String mobile){
-        getPublicMsgService.getMobileVerCode(mobile);
+        getPublicInfService.getMobileVerCode(mobile);
         return JsonResultReturnTool.success("验证码已发送至您的手机，请注意查收！");
+    }
+    @GetMapping("/getImgVerCode")
+    public JsonResult sendImgVerCode(){
+        return JsonResultReturnTool.success("验证码已发送，请注意查收！");
     }
 }

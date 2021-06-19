@@ -4,8 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.trans.translator.mapper.UserMainInformationTableMapper">
     <!--  注册相关插入 开始  -->
-    <insert id="register" parameterType="com.trans.translator.bo.UserAccountBo">
-
+    <insert id="insertIntoUserMainInfTab" parameterType="com.trans.translator.bo.UserAccountBo">
+        INSERT INTO
+            user_main_information_table
+        (u_id,u_username,u_password,u_sex,birthday,u_email,u_category,u_level_label,u_img,u_phone,u_status,created_time,updated_time)
+        VALUES
+        (#{userId},#{username},#{password},#{sex},#{birthday},#{email},#{category},#{level},#{img},#{phone},#{status},#{createdIime},#{updateTime})
+    </insert>
+    <insert id="insertIntoUserLabTab" parameterType="com.trans.translator.bo.UserAccountBo">
+        INSERT INTO
+            user_label_table
+        (u_id,u_label1,u_label2,u_label3,u_label4,update_time )
+        VALUES
+        (#{userId},#{label1},#{label2},#{label3},#{label4},#{updateTime})
     </insert>
     <!--  注册相关插入 结束  -->
     <delete id="logOffAccount"></delete>
