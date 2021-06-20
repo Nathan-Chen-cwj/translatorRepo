@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.translator.mapper.UserMainInformationTableMapper">
+    <!--  注册相关插入 开始  -->
+    <insert id="register" parameterType="com.trans.translator.bo.UserAccountBo">
+
+    </insert>
+    <!--  注册相关插入 结束  -->
+    <delete id="logOffAccount"></delete>
+
+    <select id="doesUsernameMatchPassword" resultType="com.trans.translator.vo.UserLoginVo"></select>
+    <select id="doesMobileMatchPassword" resultType="com.trans.translator.vo.UserLoginVo">
+
+    </select>
+
+    <select id="doesUsernameHasBeenUsed" resultType="java.lang.String">
+        select * from user_main_information_table where u_username = #{username}
+    </select>
+    <select id="doesMobileHasBeenUsed" resultType="java.lang.String">
+        select * from user_main_information_table where u_phone = #{mobile}
+    </select>
+    <select id="doesEmailHasBeenUsed" resultType="java.lang.String">
+        select * from user_main_information_table where u_email = #{email}
+    </select>
+</mapper>

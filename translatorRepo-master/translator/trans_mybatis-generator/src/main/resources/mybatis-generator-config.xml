@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+	<!-- 读了四个数据库参数到mbg中 -->
+	<properties resource="jdbc.properties" />
+
+	<context id="Mysql" targetRuntime="MyBatis3Simple"
+		defaultModelType="flat">
+
+		<property name="javaFileEncoding" value="UTF-8" />
+		<!--配置是否使用通用 Mapper 自带的注释扩展，默认 true -->
+		<!--<property name="useMapperCommentGenerator" value="false"/> -->
+
+		<!-- 生成的pojo类自带序列化接口 -->
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+
+		<!--通用 Mapper 插件，可以生成带注解的实体类 -->
+		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+			<property name="mappers"
+				value="tk.mybatis.mapper.common.Mapper,tk.mybatis.mapper.hsqldb.HsqldbMapper" />
+			<property name="caseSensitive" value="true" />
+			<property name="forceAnnotation" value="true" />
+			<property name="beginningDelimiter" value="`" />
+			<property name="endingDelimiter" value="`" />
+		</plugin>
+
+		<!--通用代码生成器插件 -->
+		<!--mapper接口 就是连接接口配置的地方 -->
+		<plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+			<!-- targetProject 生成mapper对应接口的工程文件 -->
+			<property name="targetProject"
+				value="./trans_mapper/src/main/java" />
+			<!-- targetPackage 生成mapper对应接口的保存位置 -->
+			<property name="targetPackage"
+				value="com.trans.translator.mapper" />
+			<property name="templatePath" value="generator/mapper.ftl" />
+			<property name="mapperSuffix" value="Mapper" />
+			<property name="fileName"
+				value="${tableClass.shortClassName}${mapperSuffix}.java" />
+		</plugin>
+
+		<!--mapper.xml 生成路径配置-->
+		<plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+			<!-- 定义 生成的mapper文件保存的路径 保存的目标工程-->
+			<property name="targetProject"
+				value="./trans_mapper/src/main/resources" />
+			<property name="targetPackage" value="mappers" />
+			<!--	保存的目标文件夹	-->
+			<property name="mapperPackage"
+				value="com.trans.translator.mapper" />
+			<property name="templatePath"
+				value="generator/mapperXml.ftl" />
+			<property name="mapperSuffix" value="Mapper" />
+			<property name="fileName"
+				value="${tableClass.shortClassName}${mapperSuffix}.xml" />
+		</plugin>
+
+		<jdbcConnection driverClass="${jdbc.driverClassName}"
+			connectionURL="${jdbc.url}" userId="${jdbc.username}"
+			password="${jdbc.password}">
+			<property name="nullCatalogMeansCurrent" value="true" />
+		</jdbcConnection>
+
+		<!--MyBatis 生成器只需要生成 Model意思就是实体类 -->
+		<!-- targetPackage 生成的pojo对象保存的位置 -->
+		<!-- targetProject 目标工程 -->
+		<javaModelGenerator
+			targetPackage="com.trans.translator.po"
+			targetProject="./trans_pojo/src/main/java" />
+		<!-- 需要生成什么表的pojo对象 % 表示全部 -->
+		<table tableName="%"/>
+	</context>
+</generatorConfiguration>
