@@ -11,7 +11,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @Author NathanChen
  * @Date 2021/3/12 17:24
  */
-@MapperScan(basePackages = "com.translator.**.mapper")
+@MapperScan(basePackages = { "com.trans.**.mapper" })
 @SpringBootApplication
 @EnableScheduling
 @EnableAsync

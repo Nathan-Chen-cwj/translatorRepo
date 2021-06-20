@@ -1,7 +1,6 @@
 package com.trans.translator.mapper;
 
 import com.trans.translator.bo.UserAccountBo;
-import com.trans.translator.po.UserJurisdictionTable;
 import com.trans.translator.po.UserMainInformationTable;
 import com.trans.translator.vo.UserLoginVo;
 

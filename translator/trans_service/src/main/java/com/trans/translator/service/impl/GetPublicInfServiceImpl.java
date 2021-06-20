@@ -46,4 +46,20 @@ public class GetPublicInfServiceImpl implements GetPublicInfService {
         }
         return (String) redisUtils.get(mobile+"-ver");
     }
+
+
+    @Override
+    public Object editInformation(Object... obj) {
+        return null;
+    }
+
+    @Override
+    public Object deleteInformation(Object... obj) {
+        return null;
+    }
+
+    @Override
+    public Object sendInformation(Object... obj) {
+        return null;
+    }
 }

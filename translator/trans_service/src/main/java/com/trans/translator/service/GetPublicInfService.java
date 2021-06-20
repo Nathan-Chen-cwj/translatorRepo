@@ -12,7 +12,7 @@ package com.trans.translator.service;
  * 4、天气推送
  * 5、
  */
-public interface GetPublicInfService {
+public interface GetPublicInfService extends InformationService{
     /**
      * 获取短信 验证码
      * @param mobile 需要的验证码的手机号
