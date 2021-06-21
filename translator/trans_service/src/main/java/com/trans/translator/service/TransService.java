@@ -29,7 +29,10 @@ public interface TransService {
     /**
      * 腾讯翻译处理翻译业务
      * @param keywords
+     * @param from
+     * @param to
      * @return
+     * @throws TencentCloudSDKException
      */
     public String translateByTencent(String keywords,String from,String to) throws TencentCloudSDKException;
 

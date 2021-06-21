@@ -34,6 +34,7 @@ public class TransServiceImpl implements TransService {
             2.把我们需要添加翻译中文注音匹配词句添加到结构中
                 通过to这个变量来确定使用哪个注音表
          */
+        System.out.println(transResult);
         System.out.println(map);
         return transResult;
     }
