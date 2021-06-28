@@ -1,4 +1,4 @@
-package com.trans.translator.service.core.baidu;
+package com.trans.translator.common.utils;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -15,12 +15,12 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Map;
 
-class HttpGet {
+public class HttpGet {
     /**
      * 套接字 超时时间 10S
      */
-    protected static final int SOCKET_TIMEOUT = 10000;
-    protected static final String GET = "GET";
+    public static final int SOCKET_TIMEOUT = 10000;
+    public static final String GET = "GET";
 
     public static String get(String host, Map<String, String> params) {
         try {

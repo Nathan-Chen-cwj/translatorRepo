@@ -1,13 +1,16 @@
 package com.trans.translator.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.trans.translator.common.ProjectConstant;
 import com.trans.translator.service.TransService;
 import com.trans.translator.service.core.baidu.TransApi;
+import com.trans.translator.service.core.google.GoogleTransApi;
 import com.trans.translator.service.core.tencent.TencentApi;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -45,8 +48,21 @@ public class TransServiceImpl implements TransService {
     }
 
     @Override
-    public String translateByGoogle(String keywords) {
-        return null;
+    public String translateByGoogle(String keywords, String from, String to) {
+        //google翻译api
+        GoogleTransApi googleTransApi = new GoogleTransApi();
+        //获取翻译结果
+        String transResult = googleTransApi.getTransResult(keywords, from, to);
+        //将结果进行处理后只输出译文
+        JSONArray jsonObject = JSONArray.parseArray(transResult);
+        String retStr = "";
+        for (Iterator<Object> it = jsonObject.getJSONArray(0).iterator(); it.hasNext(); ) {
+            JSONArray a = (JSONArray) it.next();
+            retStr += a.getString(0);
+        }
+        //返回处理后仅输出译文
+        System.out.println(retStr);
+        return transResult;
     }
 
     @Override

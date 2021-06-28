@@ -1,7 +1,7 @@
 package com.trans.translator.service.core.baidu;
 
+import com.trans.translator.common.utils.HttpGet;
 import com.trans.translator.common.utils.encryptionanddecryption.MD5;
-import com.trans.translator.common.utils.encryptionanddecryption.Md5Util;
 
 import java.util.HashMap;
 import java.util.Map;

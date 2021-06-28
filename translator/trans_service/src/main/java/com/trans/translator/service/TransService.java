@@ -39,9 +39,11 @@ public interface TransService {
     /**
      * 谷歌翻译处理翻译业务
      * @param keywords
+     * @param from
+     * @param to
      * @return
      */
-    public String translateByGoogle(String keywords);
+    public String translateByGoogle(String keywords, String from, String to);
 
     /**
      * 有道翻译处理翻译业务
