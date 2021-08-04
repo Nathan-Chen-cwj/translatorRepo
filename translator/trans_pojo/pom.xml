@@ -8,13 +8,22 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <description>
+        项目实体类存放模块
+    </description>
     <artifactId>trans_pojo</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.trans</groupId>
             <artifactId>trans_common</artifactId>
-            <version>${project.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

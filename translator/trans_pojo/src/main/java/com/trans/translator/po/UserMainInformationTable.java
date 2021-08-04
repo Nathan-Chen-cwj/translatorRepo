@@ -11,7 +11,7 @@ public class UserMainInformationTable implements Serializable {
      */
     @Id
     @Column(name = "`u_id`")
-    private Integer uId;
+    private String uId;
 
     /**
      * 用户名，用户登录系统的昵称，可用于用户登录
@@ -32,6 +32,12 @@ public class UserMainInformationTable implements Serializable {
     private String uSex;
 
     /**
+     * 用户生日
+     */
+    @Column(name = "`birthday`")
+    private Date birthday;
+
+    /**
      * 用于存储用户的电子邮箱
      */
     @Column(name = "`u_email`")
@@ -50,28 +56,34 @@ public class UserMainInformationTable implements Serializable {
     private Integer uLevelLabel;
 
     /**
-     * 用于存储用户创建账号的时间
-     */
-    @Column(name = "`u_createtime`")
-    private Date uCreatetime;
-
-    /**
-     * 用于存储用户的头像地址信息
+     * 存储用户的头像地址信息
      */
     @Column(name = "`u_img`")
     private String uImg;
 
     /**
-     * 用户存储用户的手机号码
+     * 存储用户的手机号码
      */
     @Column(name = "`u_phone`")
     private String uPhone;
 
     /**
-     * 存储用户状态 1冻结、2禁言、0正常等
+     * 存储账号状态 1冻结、2禁言、0正常等
      */
     @Column(name = "`u_status`")
     private Integer uStatus;
+
+    /**
+     * 存储用户创建账号的时间
+     */
+    @Column(name = "`created_time`")
+    private Date createdTime;
+
+    /**
+     * 用户信息更新时间
+     */
+    @Column(name = "`updated_time`")
+    private Date updatedTime;
 
     private static final long serialVersionUID = 1L;
 
@@ -80,7 +92,7 @@ public class UserMainInformationTable implements Serializable {
      *
      * @return u_id - 用户的id
      */
-    public Integer getuId() {
+    public String getuId() {
         return uId;
     }
 
@@ -89,7 +101,7 @@ public class UserMainInformationTable implements Serializable {
      *
      * @param uId 用户的id
      */
-    public void setuId(Integer uId) {
+    public void setuId(String uId) {
         this.uId = uId;
     }
 
@@ -148,6 +160,24 @@ public class UserMainInformationTable implements Serializable {
     }
 
     /**
+     * 获取用户生日
+     *
+     * @return birthday - 用户生日
+     */
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    /**
+     * 设置用户生日
+     *
+     * @param birthday 用户生日
+     */
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    /**
      * 获取用于存储用户的电子邮箱
      *
      * @return u_email - 用于存储用户的电子邮箱
@@ -202,74 +232,92 @@ public class UserMainInformationTable implements Serializable {
     }
 
     /**
-     * 获取用于存储用户创建账号的时间
+     * 获取存储用户的头像地址信息
      *
-     * @return u_createtime - 用于存储用户创建账号的时间
-     */
-    public Date getuCreatetime() {
-        return uCreatetime;
-    }
-
-    /**
-     * 设置用于存储用户创建账号的时间
-     *
-     * @param uCreatetime 用于存储用户创建账号的时间
-     */
-    public void setuCreatetime(Date uCreatetime) {
-        this.uCreatetime = uCreatetime;
-    }
-
-    /**
-     * 获取用于存储用户的头像地址信息
-     *
-     * @return u_img - 用于存储用户的头像地址信息
+     * @return u_img - 存储用户的头像地址信息
      */
     public String getuImg() {
         return uImg;
     }
 
     /**
-     * 设置用于存储用户的头像地址信息
+     * 设置存储用户的头像地址信息
      *
-     * @param uImg 用于存储用户的头像地址信息
+     * @param uImg 存储用户的头像地址信息
      */
     public void setuImg(String uImg) {
         this.uImg = uImg;
     }
 
     /**
-     * 获取用户存储用户的手机号码
+     * 获取存储用户的手机号码
      *
-     * @return u_phone - 用户存储用户的手机号码
+     * @return u_phone - 存储用户的手机号码
      */
     public String getuPhone() {
         return uPhone;
     }
 
     /**
-     * 设置用户存储用户的手机号码
+     * 设置存储用户的手机号码
      *
-     * @param uPhone 用户存储用户的手机号码
+     * @param uPhone 存储用户的手机号码
      */
     public void setuPhone(String uPhone) {
         this.uPhone = uPhone;
     }
 
     /**
-     * 获取存储用户状态 1冻结、2禁言、0正常等
+     * 获取存储账号状态 1冻结、2禁言、0正常等
      *
-     * @return u_status - 存储用户状态 1冻结、2禁言、0正常等
+     * @return u_status - 存储账号状态 1冻结、2禁言、0正常等
      */
     public Integer getuStatus() {
         return uStatus;
     }
 
     /**
-     * 设置存储用户状态 1冻结、2禁言、0正常等
+     * 设置存储账号状态 1冻结、2禁言、0正常等
      *
-     * @param uStatus 存储用户状态 1冻结、2禁言、0正常等
+     * @param uStatus 存储账号状态 1冻结、2禁言、0正常等
      */
     public void setuStatus(Integer uStatus) {
         this.uStatus = uStatus;
+    }
+
+    /**
+     * 获取存储用户创建账号的时间
+     *
+     * @return created_time - 存储用户创建账号的时间
+     */
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    /**
+     * 设置存储用户创建账号的时间
+     *
+     * @param createdTime 存储用户创建账号的时间
+     */
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    /**
+     * 获取用户信息更新时间
+     *
+     * @return updated_time - 用户信息更新时间
+     */
+    public Date getUpdatedTime() {
+        return updatedTime;
+    }
+
+    /**
+     * 设置用户信息更新时间
+     *
+     * @param updatedTime 用户信息更新时间
+     */
+    public void setUpdatedTime(Date updatedTime) {
+        this.updatedTime = updatedTime;
     }
 }

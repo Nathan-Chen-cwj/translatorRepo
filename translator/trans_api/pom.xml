@@ -15,7 +15,17 @@
         <dependency>
             <groupId>com.trans</groupId>
             <artifactId>trans_app_security_config</artifactId>
-            <version>${project.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper</artifactId>
+            <version>4.1.5</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

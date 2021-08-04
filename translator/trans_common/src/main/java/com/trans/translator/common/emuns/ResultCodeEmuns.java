@@ -1,13 +1,11 @@
 package com.trans.translator.common.emuns;
 
-import lombok.Data;
-
 /**
  * @Version 1.0
  * @Author NathanChen
  * @Date 2021/6/15 23:11
  */
-public enum ResultCode {
+public enum ResultCodeEmuns {
     /* 成功 */
     SUCCESS(200, "成功"),
 
@@ -36,7 +34,7 @@ public enum ResultCode {
     private Integer code;
     private String message;
 
-    ResultCode(Integer code, String message) {
+    ResultCodeEmuns(Integer code, String message) {
         this.code = code;
         this.message = message;
     }
@@ -64,7 +62,7 @@ public enum ResultCode {
      * @return
      */
     public static String getMessageByCode(Integer code) {
-        for (ResultCode ele : values()) {
+        for (ResultCodeEmuns ele : values()) {
             if (ele.getCode().equals(code)) {
                 return ele.getMessage();
             }

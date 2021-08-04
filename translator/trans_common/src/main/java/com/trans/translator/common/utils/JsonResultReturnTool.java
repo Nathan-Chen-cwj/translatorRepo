@@ -1,6 +1,6 @@
 package com.trans.translator.common.utils;
 
-import com.trans.translator.common.emuns.ResultCode;
+import com.trans.translator.common.emuns.ResultCodeEmuns;
 
 /**
  * @Version 1.0
@@ -20,7 +20,7 @@ public class JsonResultReturnTool {
         return new JsonResult(false);
     }
 
-    public static JsonResult isError(ResultCode resultEnum) {
+    public static JsonResult isError(ResultCodeEmuns resultEnum) {
         return new JsonResult(false, resultEnum);
     }
 

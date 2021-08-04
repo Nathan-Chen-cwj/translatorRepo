@@ -1,12 +1,8 @@
 package com.trans.translator.po;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.*;
 
-/**
- * @author vessel
- */
 @Table(name = "`user_jurisdiction_table`")
 public class UserJurisdictionTable implements Serializable {
     /**
@@ -27,12 +23,6 @@ public class UserJurisdictionTable implements Serializable {
      */
     @Column(name = "`power_type`")
     private Integer powerType;
-
-    /**
-     * 用于存储用户创建账号的时间
-     */
-    @Column(name = "`updated_time`")
-    private Date updatedTime;
 
     private static final long serialVersionUID = 1L;
 
@@ -88,23 +78,5 @@ public class UserJurisdictionTable implements Serializable {
      */
     public void setPowerType(Integer powerType) {
         this.powerType = powerType;
-    }
-
-    /**
-     * 获取记录用户开通权限时间
-     *
-     * return updatedTime 用户开通权限时间
-     */
-    public Date getUpdatedTime() {
-        return updatedTime;
-    }
-
-    /**
-     * 设置记录用户开通权限时间
-     *
-     * @param updatedTime 记录用户开通权限时间
-     */
-    public void setUpdatedTime(Date updatedTime) {
-        this.updatedTime = updatedTime;
     }
 }

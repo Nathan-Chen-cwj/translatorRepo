@@ -1,10 +1,9 @@
 spring:
   datasource:
-    druid:
-      url: jdbc:mysql://47.113.206.216:3306/trans_mysql?characterEncoding=utf8&allowMultiQueries=true
-      driver-class-name: com.mysql.jdbc.Driver
-      username: trans_developer
-      password: trans
+    url: jdbc:mysql://47.113.206.216:3306/trans_mysql?characterEncoding=utf8&allowMultiQueries=true
+    driver-class-name: com.mysql.jdbc.Driver
+    username: trans_developer
+    password: trans
   redis:
     host: 47.113.206.216
     port: 6379
@@ -24,11 +23,6 @@ spring:
     config:
       enabled: false
 
-#security:
-#  oauth2:
-#    client:
-#      client-id: seehope
-#      client-secret: 123456
 mybatis:
   mapper-locations:
     - classpath*:mappers/**/*.xml
